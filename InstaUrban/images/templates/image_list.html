@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <h2>Street Art</h2>
+    <ul>
+        {% for image in object_list %}
+            <li>{{ image.name }} |
+            <img src="{{ image.image.url }}"> |
+            {{ image.description}} | 
+            {{ image.city }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

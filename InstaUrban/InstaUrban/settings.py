@@ -38,6 +38,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Location app
+    'location_field',
+
     # Our apps
     'images',
     'users',
