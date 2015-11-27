@@ -10,3 +10,12 @@ class ListImage(ListView):
     def dispatch(self, request, *args, **kwargs):
         self.queryset = Image.objects.all().order_by('created')[::-1]
         return super(ListImage, self).dispatch(request, *args, **kwargs)
+
+
+class ListMap(ListView):
+    model = Image
+    template_name = "map.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        self.queryset = Image.objects.all().order_by('created')[::-1]
+        return super(ListMap, self).dispatch(request, *args, **kwargs)
