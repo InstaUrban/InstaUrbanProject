@@ -9,10 +9,12 @@
     <ul>
         {% for image in object_list %}
             <li>{{ image.name }} |
-            <img src="{{ image.image.url }}"> |
+            <img src="{{ image.image.url}}" style="display: block; width: 60px;"/> |
             {{ image.description}} | 
             {{ image.city }}
             </li>
+        {% empty %}
+            <li>There´s no images in the list</li>
         {% endfor %}
     </ul>
 </body>

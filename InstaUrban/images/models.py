@@ -9,7 +9,7 @@ class Image(models.Model):
     owner = models.ForeignKey(User, null=True, blank=True)
 
     # Image
-    image = models.ImageField(upload_to="static/img/place_media", null=True, blank=True)
+    image = models.ImageField(upload_to="static/img/image_media", null=True, blank=True)
     name = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
 
