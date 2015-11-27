@@ -3,7 +3,7 @@ from images.views import ListImage
 
 urlpatterns = [
 
-    url(r'^list_Image/',
+    url(r'^list_image/',
         ListImage.as_view(),
         name='home'),
 ]
