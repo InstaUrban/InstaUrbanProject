@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Details</title>
+</head>
+<body>
+    <h1>{{ image.name}}</h1>
+    <h2>Street Artist: {{ image.owner }}</h3>
+    <h3>Image</h3>
+    <img src="{{ image.image.url }}">
+    <p>{{ image.description}}</p>
+    <a href="/list_image">Home</a>
+</body>
+</html>

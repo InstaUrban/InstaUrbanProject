@@ -12,6 +12,15 @@ class ListImage(ListView):
         return super(ListImage, self).dispatch(request, *args, **kwargs)
 
 
+class ImageDetail(DetailView):
+    model = Image
+    template_name = "image_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(ImageDetail, self).get_context_data(**kwargs)
+        return context
+
+
 class ListMap(ListView):
     model = Image
     template_name = "map.html"
