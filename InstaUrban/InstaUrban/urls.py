@@ -5,5 +5,6 @@ from InstaUrban import settings
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url('', include('users.urls', namespace='users')),
     url('', include('images.urls', namespace='images')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
