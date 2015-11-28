@@ -29,12 +29,37 @@
 
     var infowindow = new google.maps.InfoWindow();
 
+
+    function success(position) {
+  
+  var coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  
+  var options = {
+    zoom: 16,
+    center: coords,
+    mapTypeControl: false,
+    navigationControlOptions: {
+      style: google.maps.NavigationControlStyle.SMALL
+    },
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  map = new google.maps.Map(document.getElementById("map"), options);
+
+  var marker2 = new google.maps.Marker({
+      position: coords,
+      map: map,
+      icon: 'http://library.csun.edu/images/google_maps/marker-blue.png',
+      title:"You are here!"
+  });
+
+
     var marker, i;
 
     for (i = 0; i < locations.length; i++) {  
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i][1], locations[i][2]),
         map: map,
+        title:"click me",
         icon: '{% static "marker.png" %}  '
       });
 
@@ -45,6 +70,18 @@
         }
       })(marker, i));
     }
+}
+
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(success);
+} else {
+  error('Geo Location is not supported');
+}
+
+
+
+
+
   </script>
   
 </body>
