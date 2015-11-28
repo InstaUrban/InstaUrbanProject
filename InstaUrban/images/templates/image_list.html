@@ -9,7 +9,7 @@
     <ul>
         {% for image in object_list %}
             <li>{{ image.name }} |
-            <img src="{{ image.image.url}}" style="display: block; width: 60px;"/> |
+            <a href="{% url 'images:image_detail' image.id %}"><img src="{{ image.image.url}}" style="display: block; width: 60px;"/></a> |
             {{ image.description}} | 
             {{ image.city }}
             </li>
@@ -17,5 +17,8 @@
             <li>There´s no images in the list</li>
         {% endfor %}
     </ul>
+    <a href="/create_place">Upload Photo</a>
+    <a href="/map">Near You</a>
+    <a href="/logout">Logout</a>
 </body>
 </html>
