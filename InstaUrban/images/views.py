@@ -3,6 +3,10 @@ from images.models import Image
 from django.views.generic import TemplateView, ListView, DetailView
 
 
+def mapa2(request):
+    return render(request, 'mapgeoloc.html')
+
+
 class ListImage(ListView):
     model = Image
     template_name = "image_list.html"
