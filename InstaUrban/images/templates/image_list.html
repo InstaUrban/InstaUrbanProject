@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <h2>Street Art</h2>
+    <ul>
+        {% for image in object_list %}
+            <li>{{ image.name }} |
+            <a href="{% url 'images:image_detail' image.id %}"><img src="{{ image.image.url}}" style="display: block; width: 60px;"/></a> |
+            {{ image.description}} | 
+            {{ image.city }}
+            </li>
+        {% endfor %}
+        {% if is_paginated %}
+<ul class="pagination">
+{% if page_obj.has_previous %}
+    <li>
+        <span><a href="?page={{ page_obj.previous_page_number }}">Previous</a></span>
+    </li>
+{% endif %}
+    <li class="">
+        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+    </li>
+{% if page_obj.has_next %}
+    <li>
+        <span><a href="?page={{ page_obj.next_page_number }}">Next</a></span>
+    </li>
+{% endif %}
+</ul>
+{% else %}
+    <h3>Your File Exam</h3>
+    <p>File not yet available</p>
+{% endif %}
+    </ul>
+    <a href="/upload_image">Upload Photo</a>
+    <a href="/map">Near You</a>
+    <a href="/logout">Logout</a>
+</body>
+</html>
