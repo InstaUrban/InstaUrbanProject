@@ -5,15 +5,36 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator
+from django.core.paginator import EmptyPage
+from django.core.paginator import PageNotAnInteger
 
 
 class ListImage(ListView):
     model = Image
     template_name = "image_list.html"
+    paginate_by = 6
 
     def dispatch(self, request, *args, **kwargs):
         self.queryset = Image.objects.all().order_by('created')[::-1]
         return super(ListImage, self).dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(ListImage, self).get_context_data(**kwargs)
+        list_image = Image.objects.all()
+        paginator = Paginator(list_image, self.paginate_by)
+
+        page = self.request.GET.get('page')
+
+        try:
+            file_image = paginator.page(page)
+        except PageNotAnInteger:
+            file_image = paginator.page(1)
+        except EmptyPage:
+            file_image = paginator.page(paginator.num_pages)
+
+        context['list_image'] = file_image
+        return context
 
 
 class ImageDetail(DetailView):
