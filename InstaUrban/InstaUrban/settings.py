@@ -40,6 +40,7 @@ INSTALLED_APPS = (
 
     # Location app
     'location_field',
+    'bootstrap3',
 
     # Our apps
     'images',
