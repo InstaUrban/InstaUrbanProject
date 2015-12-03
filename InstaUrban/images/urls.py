@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from images.views import ListImage, ListMap, ImageDetail, CreateImage
+from images.views import ListImage, ListMap, ImageDetail, CreateImage, IndexView
 
 urlpatterns = [
 
@@ -18,4 +18,8 @@ urlpatterns = [
     url(r'^upload_image/$',
         CreateImage.as_view(),
         name='new_image'),
+
+    url(r'^$',
+        IndexView.as_view(),
+        name='index'),
 ]

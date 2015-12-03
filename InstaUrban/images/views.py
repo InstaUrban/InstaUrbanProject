@@ -74,3 +74,7 @@ class CreateImage(CreateView):
         user_django = User.objects.get(id=self.request.user.id)
         form.instance.owner = user_django
         return super(CreateImage, self).form_valid(form)
+
+
+class IndexView(TemplateView):
+    template_name = "index.html"
