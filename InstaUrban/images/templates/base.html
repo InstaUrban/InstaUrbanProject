@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+
+{% load static from staticfiles %}
+<HTML>
+   <HEAD>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+      <style type="text/css">
+#button1 {
+    background: #225B6F;
+    color: #fff;
+    font-family: Sans-serif;
+    font-size: 20px;
+    height: 60px;
+    width: 150px;
+    line-height: 60px;
+    text-align: center;
+    border: 0;
+    transition: all 0.1s ease 0s;
+}
+
+ #button1 {
+  opacity: 1;
+}
+
+#button1:hover {
+  border-bottom:5px solid #D62C2C;
+}
+</style>
+   </HEAD>
+   <BODY>{% block content %}
+   	    <div class="col-md-12" id="div1">
+<center>
+    <a href="/upload_image"><button id="button1">Upload Photo</button></a>
+    <a href="/map"><button id="button1">Near You</button></a>
+    <a href="/logout"><button id="button1" >Logout</button></a>
+    <button id="button1" >Last trends</button>
+
+</center>
+
+    </div>
+    {% endblock %}
+   </BODY>
+</HTML>
