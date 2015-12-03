@@ -1,19 +1,88 @@
 <!DOCTYPE html>
+{% load static from staticfiles %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="{%static 'assets/css/main.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-theme.min.css' %}">
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/lightbox.css' %}"  media="screen" />
+    <style>
+#div1 {
+    background-color: #225B6F;
+}
+</style>
+
+<style type="text/css">
+#button1 {
+    background: #225B6F;
+    color: #fff;
+    font-family: Sans-serif;
+    font-size: 20px;
+    height: 60px;
+    width: 150px;
+    line-height: 60px;
+    text-align: center;
+    border: 0;
+    transition: all 0.1s ease 0s;
+}
+
+ #button1 {
+  opacity: 1;
+}
+
+#button1:hover {
+  border-bottom:5px solid #D62C2C;
+}
+</style>
+<style type="text/css">
+
+#hidden1 {
+    visibility: hidden
+}</style>
+    
     <title>Home</title>
 </head>
-<body>
-    <h2>Street Art</h2>
-    <ul>
-        {% for image in object_list %}
-            <li>{{ image.name }} |
-            <a href="{% url 'images:image_detail' image.id %}"><img src="{{ image.image.url}}" style="display: block; width: 60px;"/></a> |
-            {{ image.description}} | 
-            {{ image.city }}
-            </li>
-        {% endfor %}
+<body id="top">
+    <div class="col-md-12" id="div1">
+<center>
+    <a href="/upload_image"><button id="button1">Upload Photo</button></a>
+    <a href="/map"><button id="button1">Near You</button></a>
+    <a href="/logout"><button id="button1" >Logout</button></a>
+    <button id="button1" >Last trends</button>
+
+</center>
+
+    </div>
+   
+    
+<div class="col-md-3"></div>
+<div id="main" class="col-md-6">
+<section id="two">
+                        <h2>Recent Work</h2>
+                        <div class="row">
+                            {% for image in object_list %}
+                            <article class="6u 12u$(xsmall) work-item">
+                                
+            
+        
+                                <a href="{{ image.image.url}}" class="image fit thumb"><img src="{{ image.image.url}}" alt="{{ image.name }}" /></a>
+
+                                <h3 id="hidden1">{{ image.name }}:<br> {{ image.description}} | {{ image.city }}</h3>
+
+                                <p>{{ image.name }}<br>{{ image.description}} | {{ image.city }}</p>
+            
+                            </article>
+                            {% endfor %}
+                            
+                        </div>
+                        
+                    </section>
+</div><div class="col-md-5"></div>
+<div class="col-md-3">
+    
         {% if is_paginated %}
 <ul class="pagination">
 {% if page_obj.has_previous %}
@@ -35,8 +104,21 @@
     <p>File not yet available</p>
 {% endif %}
     </ul>
-    <a href="/upload_image">Upload Photo</a>
-    <a href="/map">Near You</a>
-    <a href="/logout">Logout</a>
+</div>
+    <div class="col-md-4">
+    </div>
+<script src="{%static 'assets/js/jquery.min.js'%}"></script>
+            <script src="{%static 'assets/js/jquery.poptrox.min.js'%}"></script>
+            <script src="{%static 'assets/js/skel.min.js'%}"></script>
+            <script src="{%static 'assets/js/util.js'%}"></script>
+            <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="{%static 'assets/js/main.js'%}"></script>
+<script type="text/javascript" src="{% static 'js/lightbox-plus-jquery.min.js' %}"></script>
+<script>
+    lightbox.option({
+      'maxWidth': 500,
+      'maxHeight': 500
+    })
+</script>
 </body>
 </html>
