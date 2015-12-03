@@ -84,6 +84,7 @@
 <div class="col-md-3">
     
         {% if is_paginated %}
+
 <ul class="pagination">
 {% if page_obj.has_previous %}
     <li>
@@ -100,8 +101,8 @@
 {% endif %}
 </ul>
 {% else %}
-    <h3>Your File Exam</h3>
-    <p>File not yet available</p>
+    <h3>No photos in the db</h3>
+    <p>Sorry :(</p>
 {% endif %}
     </ul>
 </div>
@@ -121,4 +122,5 @@
     })
 </script>
 </body>
+
 </html>
