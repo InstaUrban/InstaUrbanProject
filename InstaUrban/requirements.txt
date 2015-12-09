@@ -3,4 +3,4 @@ Requirements for the project
 django 1.8.5
 pillow 3.0.0
 django-location-field 1.6.1
-djangobootstrap3
+djangobootstrap3 6.2.2
