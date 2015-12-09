@@ -66,17 +66,21 @@
 
 </center>
 	</div>
-	<p>Welcome to Street FightArt</p>
+    <center>
+	<h3>Welcome to Street FightArt</h3>
+    </center>
+    <p>You can Login Us with this social medias</p>
     <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
- 	Enter with Facebook
+ 	<img src="{% static "icons/fb-icon.png" %}" style="display: block; width: 42px; height: 42px"/>
  	</a>
 	<a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">
- 	Enter with Twitter
+ 	<img src="{% static "icons/twitter-icon.png" %}" style="display: block; width: 42px; height: 42px"/>
  	</a>
  	<a href="{% url 'social:begin' 'github' %}?next={{ request.path }}">
-	Enter with Github
+	<img src="{% static "icons/github-icon.png" %}" style="display: block; width: 42px; height: 42px"/>
 	</a>
-	<a href="login">Enter with StreetFightArt</a>
+    <p>Or Signup with Street Fight-Art</p>
+	<a href="login">Enter with Street Fight-Art</a>
     <a href="signup">Sign up</a>
     {% endif %}
 </body>
