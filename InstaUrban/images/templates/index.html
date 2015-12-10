@@ -1,12 +1,87 @@
 <!DOCTYPE html>
+{% load static from staticfiles %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="{%static 'assets/css/main.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-theme.min.css' %}">
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/lightbox.css' %}"  media="screen" />
+    <style>
+#div1 {
+    background-color: #225B6F;
+}
+</style>
+
+<style type="text/css">
+#button1 {
+    background: #225B6F;
+    color: #fff;
+    font-family: Sans-serif;
+    font-size: 20px;
+    height: 60px;
+    width: 150px;
+    line-height: 60px;
+    text-align: center;
+    border: 0;
+    transition: all 0.1s ease 0s;
+}
+
+ #button1 {
+  opacity: 1;
+}
+
+#button1:hover {
+  border-bottom:5px solid #D62C2C;
+}
+</style>
+<style type="text/css">
+
+#hidden1 {
+    visibility: hidden
+}</style>
     <title>Index</title>
 </head>
 <body>
-    <p>Welcome to SreetArt</p>
-    <a href="login">Login</a>
+	{% if user and not user.is_anonymous %}
+    <div class="col-md-12" id="div1">
+<center>
+    <a href="/upload_image"><button id="button1">Upload Photo</button></a>
+    <a href="/list_image"><button id="button1">Last Trends</button></a>
+    <a href="/map"><button id="button1">Near You</button></a>
+    <a href="/logout"><button id="button1" >Logout</button></a>
+
+</center>
+	</div>
+    <p>Street FightArt</p>
+	Welcome back {{ user.get_full_name }}
+
+	{% else %}
+	<div class="col-md-12" id="div1">
+<center>
+    <a href="/list_image"><button id="button1">Last Trends</button></a>
+    <a href="/map"><button id="button1">Near You</button></a>
+
+</center>
+	</div>
+    <center>
+	<h3>Welcome to Street FightArt</h3>
+    </center>
+    <p>You can Login Us with this social medias</p>
+    <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
+ 	<img src="{% static "icons/fb-icon.png" %}" style="display: block; width: 42px; height: 42px"/>
+ 	</a>
+	<a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">
+ 	<img src="{% static "icons/twitter-icon.png" %}" style="display: block; width: 42px; height: 42px"/>
+ 	</a>
+ 	<a href="{% url 'social:begin' 'github' %}?next={{ request.path }}">
+	<img src="{% static "icons/github-icon.png" %}" style="display: block; width: 42px; height: 42px"/>
+	</a>
+    <p>Or Signup with Street Fight-Art</p>
+	<a href="login">Enter with Street Fight-Art</a>
     <a href="signup">Sign up</a>
+    {% endif %}
 </body>
 </html>
