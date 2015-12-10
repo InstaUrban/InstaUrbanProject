@@ -17,6 +17,7 @@ class ListImage(ListView):
 
     def dispatch(self, request, *args, **kwargs):
         self.queryset = Image.objects.all().order_by('created')[::-1]
+        print(Image.objects.all())
         return super(ListImage, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
