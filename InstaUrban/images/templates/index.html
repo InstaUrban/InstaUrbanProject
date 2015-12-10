@@ -55,7 +55,7 @@
 
 </center>
 	</div>
-    <p>Street FightArt</p>
+    <center><h3>Street FightArt</h3></center>
 	Welcome back {{ user.get_full_name }}
 
 	{% else %}
@@ -79,8 +79,8 @@
  	<a href="{% url 'social:begin' 'github' %}?next={{ request.path }}">
 	<img src="{% static "icons/github-icon.png" %}" style="display: block; width: 42px; height: 42px"/>
 	</a>
-    <p>Or Signup with Street Fight-Art</p>
-	<a href="login">Enter with Street Fight-Art</a>
+    <p>Or Signup with Street FightArt</p>
+	<a href="login">Enter with Street FightArt</a>
     <a href="signup">Sign up</a>
     {% endif %}
 </body>
