@@ -13,7 +13,6 @@
     <style>
 
 #div1 {
-	position: absolute;
 	z-index: 2;
 
     background-color: #225B6F;
@@ -23,52 +22,48 @@
 	font-size: 35px;
 	font-weight: 200;
 }
-#headr{
-	position: absolute;
-	top: calc(35% - 35px);
-	left: calc(50% - 255px);
-	z-index: 2;
+#div2{
+    position: absolute;
+    z-index: 2;
 
-	float: left;
-	color: #000;
-	font-family: 'Exo', sans-serif;
-	font-size: 35px;
-	font-weight: 200;
-}
-#span1{
-	color: #B91010 !important;
 }
 #button1 {
     background: #225B6F;
     color: #fff;
     font-family: Sans-serif;
-    font-size: 20px;
-    height: 60px;
-    width: 150px;
-    line-height: 60px;
+    font-size: 15px;
+    height: 40px;
+    width: 100px;
+    line-height: 40px;
     text-align: center;
     border: 0;
     transition: all 0.1s ease 0s;
+    opacity: 1;
 }
-
- #button1 {
-  opacity: 1;
+p{
+    color: #000;
 }
 
 #button1:hover {
   border-bottom:5px solid #D62C2C;
 }
 
+img:hover{
+    border-bottom:2px solid #D62C2C;
+
+}
+
 #hidden1 {
     visibility: hidden
-}</style>
+}
+</style>
     <title>Index</title>
 </head>
 <body>
 	<div class="body"></div>
-		<div class="grad"></div>
 	{% if user and not user.is_anonymous %}
-    <div class="col-md-12" id="div1">
+    <div class="row">
+    <div class="col-xs-12" id="div1">
 <center>
     <a href="/upload_image"><button id="button1">Upload Photo</button></a>
     <a href="/list_image"><button id="button1">Last Trends</button></a>
@@ -77,33 +72,44 @@
 
 </center>
 	</div>
-    <center><h3>Street FightArt</h3></center>
-	Welcome back {{ user.get_full_name }}
+</div>
+<div id="div2" class="col-xs-12">
 
+    <center><h3>Street FightArt</h3></center>
+	<center>Welcome back {{ user.get_full_name }}</center>
+    
+</div>
 	{% else %}
-	<div class="col-md-12" id="div1">
+    <div class="row">
+	<div class="col-xs-12" id="div1">
 <center>
     <a href="/list_image"><button id="button1">Last Trends</button></a>
     <a href="/map"><button id="button1">Near You</button></a>
 
 </center>
-	</div>
+	</div></div>
+
 	<div class="header">
     <center>
     </center><div>Street<span id="span1"><FIELDSET></FIELDSET>FightART</span></div><br><br><br><br><br><br>
     <p>You can Login Us with this social medias</p>
-    
+    <table>
+<tr style="background-color: transparent;border: 0px;"><td>
     <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
  	<img src="{% static "icons/fb-icon.png" %}" style="display: block; width: 42px; height: 42px"/>
  	</a>
+</td><td>
 	<a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">
  	<img src="{% static "icons/twitter-icon.png" %}" style="display: block; width: 42px; height: 42px"/>
  	</a>
+</td><td>
  	<a href="{% url 'social:begin' 'github' %}?next={{ request.path }}">
 	<img src="{% static "icons/github-icon.png" %}" style="display: block; width: 42px; height: 42px"/>
 	</a>
-    
-    <p>Or Signup with Street FightArt</p>
+    </td>
+</tr>
+    </table>
+    <p id="p1">Or Signup with Street FightArt</p>
 	<a href="login">Enter with Street FightArt</a>
     <a href="signup">Sign up</a>
     {% endif %}
