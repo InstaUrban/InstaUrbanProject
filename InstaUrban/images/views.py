@@ -17,6 +17,7 @@ class ListImage(ListView):
 
     def dispatch(self, request, *args, **kwargs):
         self.queryset = Image.objects.all().order_by('created')[::-1]
+        print(Image.objects.all())
         return super(ListImage, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -64,9 +65,9 @@ class CreateImage(CreateView):
               'city',
               'location', ]
 
-    success_url = '/list_place'
+    success_url = '/list_image'
 
-    @method_decorator(login_required(login_url="/signin/"))
+    @method_decorator(login_required(login_url="/"))
     def dispatch(self, *args, **kwargs):
         return super(CreateImage, self).dispatch(*args, **kwargs)
 

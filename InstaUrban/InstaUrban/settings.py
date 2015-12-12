@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     # Our apps
     'images',
     'users',
+    'social.apps.django_app.default',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -71,6 +72,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # Python Social Auth Context Processors
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
@@ -89,6 +93,44 @@ DATABASES = {
     }
 }
 
+AUTHENTICATION_BACKENDS = (
+ # Facebook
+ 'social.backends.facebook.FacebookOAuth2',
+ # Twitter
+ 'social.backends.twitter.TwitterOAuth',
+ # Github
+ 'social.backends.github.GithubOAuth2',
+ # Google
+ 'social.backends.open_id.OpenIdAuth',
+ 'social.backends.google.GoogleOpenId',
+ 'social.backends.google.GoogleOAuth2',
+ 'social.backends.google.GoogleOAuth',
+ # Django
+ 'django.contrib.auth.backends.ModelBackend',
+)
+
+# Facebook Keys
+SOCIAL_AUTH_FACEBOOK_KEY = '433184503541251'
+SOCIAL_AUTH_FACEBOOK_SECRET = '87eb542a7778150ce401907a28e331db'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = "/"
+
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+  'locale': 'ru_RU',
+  'fields': 'id, name, email'
+}
+
+# Twitter Keys
+SOCIAL_AUTH_TWITTER_KEY = 'uoAvDc7Kswfd3bOG82pPzH9q1'
+SOCIAL_AUTH_TWITTER_SECRET = '5njZ6syrQmr4XfBRfGeptRSO4SxPDEucaYjnXX5GaN2W14es45'
+
+# Github Keys
+SOCIAL_AUTH_GITHUB_KEY = 'b4546db19c9bdd7c5742'
+SOCIAL_AUTH_GITHUB_SECRET = '4e6531bf158ae3a3ce8fe13fad87013e4db605bc'
+
+# Google Keys
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '999653296163-pqoug1njvki7fa3dgrmq4mh0fhkn9ggc.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'Be9b3DwB76kd-5sLIBeyXfrb'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

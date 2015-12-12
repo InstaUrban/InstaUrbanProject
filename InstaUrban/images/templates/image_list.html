@@ -10,12 +10,15 @@
     
     <link rel="stylesheet" type="text/css" href="{% static 'css/lightbox.css' %}"  media="screen" />
     <style>
+    body{
+    background: #CED0EA;
+
+    font-family: Arial;
+    font-size: 12px;
+}
 #div1 {
     background-color: #225B6F;
 }
-</style>
-
-<style type="text/css">
 #button1 {
     background: #225B6F;
     color: #fff;
@@ -36,8 +39,6 @@
 #button1:hover {
   border-bottom:5px solid #D62C2C;
 }
-</style>
-<style type="text/css">
 
 #hidden1 {
     visibility: hidden
@@ -51,7 +52,6 @@
     <a href="/upload_image"><button id="button1">Upload Photo</button></a>
     <a href="/map"><button id="button1">Near You</button></a>
     <a href="/logout"><button id="button1" >Logout</button></a>
-    <button id="button1" >Last trends</button>
 
 </center>
 
@@ -77,7 +77,6 @@
                             </article>
                             {% endfor %}
                             
-                        </div>
                         
                     </section>
 </div><div class="col-md-5"></div>
@@ -100,9 +99,6 @@
     </li>
 {% endif %}
 </ul>
-{% else %}
-    <h3>No photos in the db</h3>
-    <p>Sorry :(</p>
 {% endif %}
     </ul>
 </div>

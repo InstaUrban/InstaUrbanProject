@@ -1,6 +1,60 @@
 {# Load the tag library #}
 {% load bootstrap3 %}
+{% load static from staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="{%static 'assets/css/main.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-theme.min.css' %}">
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/lightbox.css' %}"  media="screen" />
+    <style>
+    body{
+    background: #CED0EA;
 
+    font-family: Arial;
+    font-size: 12px;
+}
+#div1 {
+    background-color: #225B6F;
+}
+#button1 {
+    background: #225B6F;
+    color: #fff;
+    font-family: Sans-serif;
+    font-size: 20px;
+    height: 60px;
+    width: 150px;
+    line-height: 60px;
+    text-align: center;
+    border: 0;
+    transition: all 0.1s ease 0s;
+}
+
+ #button1 {
+  opacity: 1;
+}
+
+#button1:hover {
+  border-bottom:5px solid #D62C2C;
+}
+#hidden1 {
+    visibility: hidden
+}</style>
+    
+    <title>Upload Photo</title>
+</head>
+<body id="top">
+    <div class="col-md-12" id="div1">
+<center>
+    <a href="/list_image"><button id="button1">Last Trends</button></a>
+    <a href="/map"><button id="button1">Near You</button></a>
+    <a href="/logout"><button id="button1" >Logout</button></a>
+
+</center>
+
+    </div>
 {# Load CSS and JavaScript #}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
